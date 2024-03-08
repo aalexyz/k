@@ -14,8 +14,7 @@ public class Chassis {
         FL = hm.get(DcMotorEx.class, "frontLeft");
         BR = hm.get(DcMotorEx.class, "backRight");
         BL = hm.get(DcMotorEx.class, "backLeft");
-        FL.setDirection(DcMotorSimple.Direction.REVERSE);
-        BL.setDirection(DcMotorSimple.Direction.REVERSE);
+
         MotorConfigurationType mct;
 
         mct = FR.getMotorType();
@@ -49,10 +48,10 @@ public class Chassis {
 
         double div = Math.max(Math.abs(x) + Math.abs(y) + Math.abs(rot) , 1);
 
-        FL.setPower(-(y + x + rot) / div);
-        BL.setPower((y - x + rot) / div);
-        FR.setPower((y - x - rot) / div);
-        BR.setPower(-(y + x - rot) / div);
+        FL.setPower((y + x + rot) / div);
+        BL.setPower(-(y - x + rot) / div);
+        FR.setPower(-(y - x - rot) / div);
+        BR.setPower((y + x - rot) / div);
 
     }
 }

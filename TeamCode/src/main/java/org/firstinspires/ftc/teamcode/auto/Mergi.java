@@ -25,15 +25,15 @@ public class Mergi extends LinearOpMode {
     boolean crashed = false;
 
     public void runOpMode() throws InterruptedException {
-        frontLeftMotor = hardwareMap.get(DcMotorEx.class, "motorFL");
-        frontRightMotor = hardwareMap.get(DcMotorEx.class, "motorFR");
-        backLeftMotor = hardwareMap.get(DcMotorEx.class, "motorBL");
-        backRightMotor = hardwareMap.get(DcMotorEx.class, "motorBR");
+        frontLeftMotor = hardwareMap.get(DcMotorEx.class, "frontLeft");
+        frontRightMotor = hardwareMap.get(DcMotorEx.class, "frontRight");
+        backLeftMotor = hardwareMap.get(DcMotorEx.class, "backLeft");
+        backRightMotor = hardwareMap.get(DcMotorEx.class, "backRight");
 
-//        mfl.setDirection(DcMotorSimple.Direction.REVERSE);
-        frontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-//        backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        backRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        //   frontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        //  backRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         ArrayList<DcMotorEx> motorListDrive = new ArrayList<>();
         motorListDrive.add(frontLeftMotor);
