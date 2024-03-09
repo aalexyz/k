@@ -18,7 +18,7 @@ public class ServoTest extends LinearOpMode {
         Servo pivot = hardwareMap.get(Servo.class, "pivot");
         claw1.setPosition(0);
         claw2.setPosition(0);
-        pivot.setPosition(0.5);
+        pivot.setPosition(0);
 
         claw1.setDirection(claw1dir);
         claw2.setDirection(claw2dir);

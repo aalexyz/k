@@ -14,15 +14,12 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 public class MainOp extends LinearOpMode {
     OutTake outTake;
     Chassis chassis;
-    Gamepad prevgm, currentgm;
     Servo claw1, claw2, plane;
     private boolean closeClaw1 = false, closeClaw2 = false;
-    private boolean lPress = false, rPress = false, aPress = false;
+    private boolean lPress = false, rPress = false, yPress = false;
     public static double closePosition1 = 0.25, closePosition2 = 0.35;
     @Override
     public void runOpMode() throws InterruptedException {
-        currentgm = new Gamepad();
-        prevgm = new Gamepad();
         outTake = new OutTake(hardwareMap);
         chassis = new Chassis(hardwareMap);
         claw1 = hardwareMap.get(Servo.class, "claw1");
@@ -40,8 +37,6 @@ public class MainOp extends LinearOpMode {
         time.reset();
 
         while (opModeIsActive() && !isStopRequested()){
-            currentgm.copy(gamepad1);
-            prevgm.copy(currentgm);
             claw1.setPosition(closeClaw1 ? closePosition1 : 0);
             claw2.setPosition(closeClaw2 ? closePosition2 : 0);
 
@@ -54,15 +49,14 @@ public class MainOp extends LinearOpMode {
                 closeClaw2 = !closeClaw2;
             } else if(lPress && !gamepad1.left_bumper) lPress = false;
 
-            if((gamepad2.dpad_up && gamepad2.cross) && !aPress){
-                aPress = true;
-                plane.setPosition(0.3);
-            } else if(aPress && !(gamepad2.dpad_up && gamepad2.cross)) aPress = false;
-
-            if(currentgm.y && !prevgm.y)
-            {
-                plane.setPosition(1);
+            if(gamepad1.y && !yPress){
+                yPress = true;
+                plane.setPosition(0.7);
+            } else if(yPress && !gamepad1.y) {
+                yPress = false;
+                plane.setPosition(0);
             }
+
 
             outTake.update(-gamepad2.right_stick_y, -gamepad2.left_stick_y, 1, telemetry);
 

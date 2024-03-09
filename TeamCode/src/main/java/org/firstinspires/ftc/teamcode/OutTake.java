@@ -55,7 +55,7 @@ public class OutTake {
 
 
         angle.setTargetPosition(midPoint);
-        pivot.setPosition(0.5);
+        pivot.setPosition(0.6);
     }
 
     public static final double maxExtension = 1150, r = 16, b = 235; // r and b in mm
